@@ -145,7 +145,7 @@ function checkWinner(){
  winningCombination.forEach(combination=>{
    if(grids[combination[0]].innerHTML === icnBox1.innerHTML && grids[combination[1]].innerHTML === icnBox1.innerHTML && grids[combination[2]].innerHTML === icnBox1.innerHTML ){
     winText.textContent = p1N.value + " Win" //change to name box
-    grids[combination].style.backgroundColor = "green"
+    
     playUi.style.visibility = "visible"
    }else if(grids[combination[0]].innerHTML === icnBox2.innerHTML && grids[combination[1]].innerHTML === icnBox2.innerHTML && grids[combination[2]].innerHTML === icnBox2.innerHTML ){
    
@@ -155,6 +155,15 @@ function checkWinner(){
 
   }) 
 }
+
+// function checkWinner(){
+//   winningCombination.forEach(comb=>{
+//     if(grids[comb[0]].innerHTMl === icnBox1.innerHTML){
+//       console.log("win")
+//     }
+//   })
+// }
+
 function checkDraw(notEmp){
   
   if(notEmp.innerHTML != ""){
