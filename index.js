@@ -49,9 +49,10 @@ selecticon.forEach(icon=>{
    selecticon2.forEach(icon2=>{
     if(icon.innerHTML === icon2.innerHTML){
       icon2.style.backgroundColor = "white"
-      icon2.style.pointerEvents = "none"
+      icon2.classList.add("addpointer")
     }else{
       icon2.style.backgroundColor = "rgb(16, 109, 160)"
+      icon2.classList.remove("addpointer")
     }
    })
    
@@ -63,19 +64,27 @@ selecticon.forEach(icon=>{
 })
 
 icnBox2.addEventListener("click",()=>{
-  
+ 
   allicons2.classList.remove("hide")
   selecticon2.forEach(icon=>{
     icon.addEventListener("click",()=>{
-      
+     selecticon.forEach(icon2=>{
+      if(icon.innerHTML === icon2.innerHTML){
+        icon2.style.backgroundColor = "white"
+        icon2.classList.add("addpointer")
+      }else{
+        icon2.style.backgroundColor = "rgb(16, 109, 160)"
+        icon2.classList.remove("addpointer")
+      }
+     })
+     
       icnBox2.innerHTML = icon.innerHTML
       allicons2.classList.add("hide")
-      
-      
     })
   })
   
   })
+
 
 
 
@@ -86,10 +95,13 @@ function placeMark(){
         
             if(grid.innerHTML === "" && isPlayerTurn === true){
                 grid.innerHTML = icnBox1.innerHTML
+                
                isPlayerTurn = false;
-
+               
+                
             }else if(isPlayerTurn === false && grid.innerHTML === ""){
-                grid.innerHTML = icnBox2.innerHTML
+             
+              grid.innerHTML = icnBox2.innerHTML
                 isPlayerTurn = true
                 
             }
@@ -106,18 +118,38 @@ function placeMark(){
             
         })
         
-    })
+       
+      })
+    
 }
+
+
+grids.forEach(grid=>{
+  grid.addEventListener("mouseenter",()=>{
+    if(isPlayerTurn === true){
+      grid.style.backgroundColor = "rgba(0,200,0,0.4)"
+      
+    }else if(isPlayerTurn === false){
+      grid.style.backgroundColor = "rgba(0,0,200,0.4)"
+    }
+  })
+  grid.addEventListener("mouseleave",()=>{
+    grid.style.backgroundColor = "white"
+    
+  })
+})
+
 
 function checkWinner(){
    
  winningCombination.forEach(combination=>{
    if(grids[combination[0]].innerHTML === icnBox1.innerHTML && grids[combination[1]].innerHTML === icnBox1.innerHTML && grids[combination[2]].innerHTML === icnBox1.innerHTML ){
-    winText.textContent = "X Win!" //change to name box
+    winText.textContent = p1N.value + " Win" //change to name box
+    grids[combination].style.backgroundColor = "green"
     playUi.style.visibility = "visible"
    }else if(grids[combination[0]].innerHTML === icnBox2.innerHTML && grids[combination[1]].innerHTML === icnBox2.innerHTML && grids[combination[2]].innerHTML === icnBox2.innerHTML ){
    
-    winText.textContent = "O Win!"//change to p2 name
+    winText.textContent = p2N.value + " Win!"//change to p2 name
     playUi.style.visibility = "visible"
    }
 

@@ -32,6 +32,14 @@ body{
     font-size: 60px;
     font-weight: bold;
 }
+.iconBox1:hover,.iconBox2:hover{
+    box-shadow: 0px 0px 10px 8px rgb(60, 143, 237);
+    ;
+}
+.grid>img{
+    height: 60px;
+    width: 60px;
+}
 .grid:nth-child(3n){
     border-left: none;
     border-right: none;
@@ -121,7 +129,7 @@ body{
 
 }
 .iconBox1,.iconBox2{
-    border: 2px solid black;
+    black;
     border-radius: 20px;
     width: 60px;
     height: 60px;
@@ -172,4 +180,7 @@ img{
 }
 .p2N:focus,.p1N:focus{
     outline: 2px solid green;
+}
+.addpointer{
+    pointer-events: none;
 }
